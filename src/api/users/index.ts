@@ -5,11 +5,11 @@ import { apiCommand } from "../apiFactory";
 const BASE_URL = import.meta.env.VITE_API_URL
 
 const getUsers = () => {
-    return apiCommand<User[]>('GET')(BASE_URL, 'users');
+    return apiCommand<User[]>('GET')(BASE_URL, '/users');
 }
 
 const getUser = (id: string) => {
-    return apiCommand<User>('GET')(BASE_URL, `users/${id}`)
+    return apiCommand<User>('GET')(BASE_URL, `/users/${id}`)
 }
 
 const createUser = (data: Omit<User, 'createdAt' | 'updatedAt' | 'balance' | 'payments' | 'id'>) => {
@@ -17,7 +17,7 @@ const createUser = (data: Omit<User, 'createdAt' | 'updatedAt' | 'balance' | 'pa
 }
 
 const checkBalance = (data: CheckBalance) => {
-    return apiCommand<number>('POST')(BASE_URL, 'users/check-balance', data)
+    return apiCommand<number>('POST')(BASE_URL, '/users/check-balance', data)
 }
 
 const addBalance = (data: AddBalance) => {
