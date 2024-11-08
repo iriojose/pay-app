@@ -22,7 +22,7 @@ export type CheckBalance = {
 export type AddBalance = {
     document: string
     phone: string
-    amount: number
+    balance: number
 }
 
 export const createUserSchema = z.object({
