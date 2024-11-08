@@ -2,6 +2,7 @@ import { FC } from "react"
 import { useParams } from "react-router-dom"
 import { getUser } from "../../api/users"
 import { useQuery } from "react-query"
+import { Loading } from "../../components/molecules/Loading"
 
 export const User: FC = () => {
     const { id } = useParams()
@@ -12,9 +13,8 @@ export const User: FC = () => {
 
     return (
         <div>
-            user
             {isLoading && (
-                <div className="flex justify-center items-center font-medium text-lg">Cargando...</div>
+                <Loading />
             )}
 
             {JSON.stringify(data)}
