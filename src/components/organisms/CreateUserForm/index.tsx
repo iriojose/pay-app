@@ -92,7 +92,7 @@ export const CreateUserForm: FC = () => {
                     <div className="relative z-10 transition-colors duration-300 group-hover:text-white">
                         {isSubmitting ? "Loading...":"Sign Up"}
                     </div>
-                    <span className="absolute inset-0 bg-black/70 transition-transform duration-300 translate-y-full group-hover:translate-y-0"></span>
+                    <span className="absolute inset-0 bg-blue-600 transition-transform duration-300 translate-y-full group-hover:translate-y-0"></span>
                 </button>
             </div>
         </form>
