@@ -1,4 +1,4 @@
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { useMutation } from "react-query"
 import { checkBalance } from "../../../api/users"
 import { toast } from "react-toastify"
@@ -15,6 +15,10 @@ export const Balance:FC<Props> = ({ user }) => {
     const [isModalAddBalanceOpen, setIsModalAddBalanceOpen] = useState(false)
     const [isModalPayOpen, setIsModalPayOpen] = useState(false)
 
+    useEffect(() => {
+        setStateBalance(user.balance)
+    }, [user])
+    
     const mutationCheckBalance = useMutation(checkBalance, {
         onSuccess: (data) => {
             setStateBalance(data)

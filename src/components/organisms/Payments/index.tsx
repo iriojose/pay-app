@@ -38,7 +38,7 @@ export const Payments: FC<Props> = ({payments}) => {
                             <p><span className="font-semibold text-gray-700">Amount:</span> ${payment.amount.toFixed(2)}</p>
                             <p><span className="font-semibold text-gray-700">Date:</span> {new Date(payment.createdAt).toLocaleDateString()}</p>
                             <p><span className="font-semibold text-gray-700">Status: </span> 
-                            <span className={`text-${payment.status == 'CONFIRMED' ? 'green':'red'}-500`}>
+                            <span className={`${payment.status == 'CONFIRMED' ? 'text-green-500':'text-red-500'}`}>
                                 {payment.status}
                             </span>
                             </p>
