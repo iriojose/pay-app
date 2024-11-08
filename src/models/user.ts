@@ -12,3 +12,14 @@ export type User = {
     updatedAt: string
     payments?: Payment[]
 }
+
+export type CheckBalance = {
+    document: string
+    phone: string
+}
+
+export type AddBalance = {
+    document: string
+    phone: string
+    amount: number
+}
