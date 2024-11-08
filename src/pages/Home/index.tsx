@@ -1,17 +1,16 @@
-import { FC, useEffect, useState } from "react"
-import { User } from "../../models/user"
+import { FC } from "react"
 import { getUsers } from "../../api/users"
+import { useQuery } from "react-query";
 
 export const Home: FC = () => {
-    const [users, setUsers] = useState<User[]>([])
-
-    useEffect(() => {
-        getUsers().then(data => setUsers(data))
-    },[])
+    const { data, isLoading } = useQuery('users', getUsers)
 
     return (
         <div>
-            {JSON.stringify(users)}
+            {isLoading && (
+                <div className="flex justify-center items-center font-medium text-lg">Cargando...</div>
+            )}
+            {JSON.stringify(data)}
         </div>
     )
 } 
