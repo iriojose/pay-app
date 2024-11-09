@@ -1,6 +1,7 @@
 import { FC } from "react"
 import { CreateUserForm } from "../../components/organisms/CreateUserForm"
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/molecules/Button";
 
 export const Create: FC = () => {
     const navigate = useNavigate()
@@ -8,13 +9,9 @@ export const Create: FC = () => {
     return (
         <div>
             <div className="flex justify-start mx-10 my-10">
-                <button
-                    onClick={() => navigate('/')}
-                    type="button"
-                    className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded shadow-md transition duration-300 ease-in-out"
-                >
+                <Button onClick={() => navigate('/')}>
                     Back
-                </button>
+                </Button>
             </div>
 
             <div className="text-center font-bold text-xl">
@@ -26,4 +23,4 @@ export const Create: FC = () => {
             </div>
         </div>
     )
-} 
+}

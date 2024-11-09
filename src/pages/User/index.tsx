@@ -7,6 +7,7 @@ import { User } from "../../models/user"
 import { Payment } from "../../models/payment"
 import { Profile } from "../../components/organisms/Profile"
 import { Payments } from "../../components/organisms/Payments"
+import { Button } from "../../components/molecules/Button"
 
 export const UserView: FC = () => {
     const { id } = useParams()
@@ -19,17 +20,15 @@ export const UserView: FC = () => {
     return (
         <div>
             {isLoading && (
-                <Loading />
+                <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                    <Loading />
+                </div>
             )}
 
             <div className="flex justify-start mx-10 mt-5">
-                <button
-                    onClick={() => navigate('/')}
-                    type="button"
-                    className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded shadow-md transition duration-300 ease-in-out"
-                >
+                <Button onClick={() => navigate('/')}>
                     Back
-                </button>
+                </Button>
             </div>
 
             {data && (
@@ -41,4 +40,4 @@ export const UserView: FC = () => {
             )}
         </div>
     )
-} 
+}
