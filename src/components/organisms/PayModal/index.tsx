@@ -3,6 +3,8 @@ import { useMutation, useQueryClient } from "react-query"
 import { pay, confirm } from "../../../api/payment";
 import { toast } from "react-toastify"
 import Input from "../../molecules/Input";
+import { Button } from "../../molecules/Button";
+import { Loading } from "../../molecules/Loading";
 
 type Props = {
     setIsModalOpen: (value: boolean) => void
@@ -74,29 +76,29 @@ export const PayModal:FC<Props> = ({ id, email, setIsModalOpen}) => {
                     )}
 
                     <div className="flex justify-end space-x-4">
-                        <button 
+                        <Button 
                             onClick={() => setIsModalOpen(false)}
-                            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+                            className="bg-gray-200 rounded-lg hover:bg-gray-300 text-black"
                         >
                             Cancel
-                        </button>
+                        </Button>
 
                         {!isTokenStep ? (
-                            <button 
+                            <Button 
                                 onClick={handlePay}
                                 disabled={amount <= 0}
-                                className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700"
+                                className="w-[150px] bg-yellow-600 text-white rounded-lg hover:bg-yellow-700"
                             >
-                                {mutationPay.isLoading ? "Processing..." : "Pay"}
-                            </button>
+                                {mutationPay.isLoading ? <Loading className="border-white-600"/> : "Pay"}
+                            </Button>
                         ):(
-                            <button 
+                            <Button 
                                 onClick={handleConfirm}
                                 disabled={mutationConfirm.isLoading || token.length !== 6}
-                                className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700"
+                                className="w-[150px] bg-yellow-600 text-white rounded-lg hover:bg-yellow-700"
                             >
-                                {mutationConfirm.isLoading ? "Processing..." : "Confirm Payment"}
-                            </button>
+                                {mutationConfirm.isLoading ? <Loading className="border-white-600"/> : "Confirm"}
+                            </Button>
                         )}
                     </div>
             </div>

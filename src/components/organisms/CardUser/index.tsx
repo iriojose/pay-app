@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Button } from '../../molecules/Button';
 
 type Props = {
     firstName: string
@@ -20,11 +21,12 @@ export const UserCard: FC<Props> = ({ firstName, lastName, phone, id }) => {
                 <p className="text-blue-100">Phone: {phone}</p>
             </div>
             <div className="p-4">
-                <button 
+                <Button 
                     onClick={() => navigate(`/user/${id}`) }
-                    className="w-full py-2 px-4 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
+                    className="w-full bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                >
                     Actions
-                </button>
+                </Button>
             </div>
         </div>
     );
