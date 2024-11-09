@@ -7,12 +7,14 @@ import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../../../api/users";
 import { toast } from "react-toastify";
+import { Button } from "../../molecules/Button";
+import { Loading } from "../../molecules/Loading";
 
 export const CreateUserForm: FC = () => {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<CreateUser>(
+    const { register, handleSubmit, formState: { errors } } = useForm<CreateUser>(
         { 
             resolver: zodResolver(createUserSchema),
             mode: "onSubmit",
@@ -82,19 +84,9 @@ export const CreateUserForm: FC = () => {
                 />
             </div>
 
-
-            <div className="flex items-center justify-between">
-                <button
-                    disabled={isSubmitting}
-                    type="submit"
-                    className="relative overflow-hidden group w-full bg-none border border-black/15 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >   
-                    <div className="relative z-10 transition-colors duration-300 group-hover:text-white">
-                        {isSubmitting ? "Loading...":"Sign Up"}
-                    </div>
-                    <span className="absolute inset-0 bg-blue-600 transition-transform duration-300 translate-y-full group-hover:translate-y-0"></span>
-                </button>
-            </div>
+            <Button disabled={mutation.isLoading} className="w-full mt-2 disabled:bg-white" type="submit">   
+                {mutation.isLoading ? <Loading />:"Sign Up"}
+            </Button>
         </form>
     )
 }

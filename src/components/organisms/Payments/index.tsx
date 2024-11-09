@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import { Payment } from "../../../models/payment";
+import { Button } from "../../molecules/Button";
 
 type Props = {
     payments: Payment[]
@@ -12,7 +13,6 @@ enum PaymentStatus {
 
 export const Payments: FC<Props> = ({payments}) => {
     const [paymentFilter, setPaymentFilter] = useState<PaymentStatus>(PaymentStatus.confirmed);
-
     const filteredPayments = payments.filter(payment => payment.status === paymentFilter) || [];
 
     return (
@@ -20,14 +20,14 @@ export const Payments: FC<Props> = ({payments}) => {
             <h3 className="text-xl font-semibold text-gray-800">Payments</h3>
             <div className="flex space-x-6 my-4">
                 {['CONFIRMED', 'FAILED'].map((status) => (
-                    <button
+                    <Button
                         key={status}
-                        className={`px-6 py-3 rounded-lg text-sm font-medium focus:outline-none transition duration-300 
+                        className={`px-6 py-3 rounded-lg text-sm font-medium focus:outline-none 
                             ${paymentFilter === status ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700 hover:bg-blue-100'}`}
                         onClick={() => setPaymentFilter(status as PaymentStatus)}
                     >
                         {status.charAt(0).toUpperCase() + status.slice(1)}
-                    </button>
+                    </Button>
                 ))}
             </div>
 

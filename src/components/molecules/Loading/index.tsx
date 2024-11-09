@@ -1,9 +1,11 @@
-import { FC }from 'react';
+import { FC, HTMLAttributes } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-export const Loading: FC = () => {
+type Props = HTMLAttributes<HTMLDivElement>
+
+export const Loading: FC<Props> = ({className}) => {
+    const classes = "relative w-6 h-6 border-t-4 border-blue-600 border-solid rounded-full animate-spin"
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="relative w-16 h-16 border-t-4 border-blue-600 border-solid rounded-full animate-spin"></div>
-        </div>
+        <div className={twMerge(classes, className)}></div>
     );
 };

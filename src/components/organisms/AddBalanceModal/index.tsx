@@ -2,6 +2,8 @@ import { FC, useState } from "react"
 import { useMutation } from "react-query"
 import { addBalance } from "../../../api/users"
 import Input from "../../molecules/Input"
+import { Button } from "../../molecules/Button"
+import { Loading } from "../../molecules/Loading"
 import { toast } from "react-toastify"
 
 type Props = {
@@ -42,22 +44,20 @@ export const AddBalanceModal: FC<Props> = ({phone, document, setIsModalOpen, set
                 />
                         
                 <div className="flex justify-end space-x-4">
-                    <button 
+                    <Button 
                         onClick={() => setIsModalOpen(false)}
-                        className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+                        className="bg-gray-200 rounded-lg hover:bg-gray-300 text-black"
                     >
                         Cancel
-                    </button>
+                    </Button>
 
-                    <button 
+                    <Button 
                         onClick={handleAddBalance}
                         disabled={mutationAddBalance.isLoading || amount <= 0}
-                        className={`px-4 py-2 rounded-lg shadow transition ${
-                            mutationAddBalance.isLoading ? "bg-blue-300" : "bg-blue-600 text-white hover:bg-blue-700"
-                        }`}
+                        className={'w-[150px] rounded-lg shadow'}
                     >
-                        {mutationAddBalance.isLoading ? "Adding..." : "Add Balance"}
-                    </button>
+                        {mutationAddBalance.isLoading ? <Loading className="border-white-600"/> : "Add Balance"}
+                    </Button>
                 </div>
             </div>
         </div>

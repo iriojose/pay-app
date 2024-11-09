@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components/molecules/Button';
 
 export const NotFound = () => {
     const navigate = useNavigate();
@@ -10,12 +11,12 @@ export const NotFound = () => {
                 <h2 className="mt-4 text-3xl font-semibold text-gray-800">Page Not Found</h2>
                 <p className="mt-2 text-lg text-gray-500">Sorry, the page you're looking for doesn't exist or has been moved.</p>
                 <div className="mt-6">
-                    <button
+                    <Button
                         onClick={() => navigate('/')}
-                        className="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-lg transition duration-300 ease-in-out"
+                        className="px-6 py-3 rounded-full"
                     >
                         Go Back Home
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

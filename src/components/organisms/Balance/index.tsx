@@ -5,6 +5,8 @@ import { toast } from "react-toastify"
 import { User } from "../../../models/user"
 import { AddBalanceModal } from "../AddBalanceModal"
 import { PayModal } from "../PayModal"
+import { Button } from "../../molecules/Button"
+import { Loading } from "../../molecules/Loading"
 
 type Props = {
     user: User
@@ -38,24 +40,25 @@ export const Balance:FC<Props> = ({ user }) => {
             <p className="text-xl font-bold text-gray-700">Balance</p>
             <p className="text-4xl font-extrabold text-blue-600">${stateBalance.toFixed(2)}</p>
             <div className="mt-6 space-y-4">
-                <button 
+                <Button 
                     disabled={mutationCheckBalance.isLoading}
                     onClick={handleCheckBalance}
-                    className="w-full px-4 py-2 hover:text-white rounded-lg shadow hover:bg-green-600 transition"
+                    className="w-full hover:text-white rounded-lg shadow bg-white text-black hover:bg-green-600"
                 >
-                    {mutationCheckBalance.isLoading ? "Loading..." : "Check Balance"}
-                </button>
-                <button 
+                    {mutationCheckBalance.isLoading ? <Loading className="border-white-600"/> : "Check Balance"}
+                </Button>
+                <Button 
                     onClick={() => setIsModalAddBalanceOpen(true)}
-                    className="w-full px-4 py-2 hover:text-white  rounded-lg shadow hover:bg-blue-600 transition"
+                    className="w-full hover:text-white rounded-lg shadow bg-white text-black hover:bg-blue-600"
                 >
                     Add Balance
-                </button>
-                <button 
+                </Button>
+                <Button 
                     onClick={() => setIsModalPayOpen(true)}
-                    className="w-full px-4 py-2 hover:text-white rounded-lg shadow hover:bg-yellow-600 transition">
+                    className="w-full hover:text-white rounded-lg shadow bg-white text-black hover:bg-yellow-600"
+                >
                     Pay
-                </button>
+                </Button>
             </div>
 
             {isModalAddBalanceOpen && (
